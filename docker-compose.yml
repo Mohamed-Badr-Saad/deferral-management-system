@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: deferral-postgres
+    restart: always
+    ports:
+      - '9432:5432'  # Use high port number
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deferral_db
+      POSTGRES_HOST_AUTH_METHOD: md5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
